@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html style="background-color: #eaeaea; overflow-y: auto;">
+<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  		<meta charset="UTF-8">
+  		<meta name="description" content="Lucy | A simple and modern Discord bot that provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools. Lucy is built on Node.js and uses the Discord.js framework.">
+  		<meta name="keywords" content="Discord, Discord bots, Discord bot, Lucy, Lucy Discord">
+  		<meta name="author" content="Lucy">
+		<title>LUCY</title>
+		<link rel="icon" href="cdn/avatar.png">
+		<link rel="stylesheet" href="cdn/css/bulma.css">
+		<link rel="stylesheet" href="cdn/css/font-awesome.min.css">
+		<link rel="stylesheet" href="cdn/css/main.css">
+        <meta property="og:url" content="index.html">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="A simple and modern Discord bot.">
+        <meta property="og:description" content="Lucy provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools. Lucy is built on Node.js and uses the Discord.js framework.">
+        <meta property="og:image" content="cdn/images/lucy-og.png">
+        <meta property="og:image:secure_url" content="cdn/images/lucy-og.png">
+		<meta name="viewport" content="width=device-width, initial-scale=0.8">
+		<style>
+			.status td {
+				text-align: center !important;
+				padding: 2px;
+			}
+			.status thead {
+				border-bottom: 1px solid #ddd;
+			}
+			.status th:first-child, .status td:first-child { 
+    			font-weight: bolder;
+			}
+			.premium td {
+				text-align: center !important;
+				padding: 15px;
+			}
+			.premium th, .premium td {
+				border-bottom: 1px solid #ddd;
+			}
+			.premium th:first-child, .premium td:first-child { 
+    			font-weight: bolder;
+			}
+			#particle-js {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: 50% 50%;
+				opacity: 0.48;
+			}
+			canvas {
+				position: fixed;
+			}
+			@media screen and (max-width: 770px) {
+				.hero-body {
+					padding: 0px !important;
+					padding-top: 3em !important;
+				}
+			}
+			.circle:before {
+				content: ' \25CF';
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="hero is-info is-fullheight" style="background-image: url('cdn/images/couple.png'); background-size: cover; background-color: #ffbdba;">
+			<!-- Hero header: will stick at the top -->
+			<div class="hero-head">
+				<header class="nav">
+					<div class="container">
+						<a class="nav-item" href='index.html'>
+							<img src="cdn/images/discord-logo.svg" class="hideme" style="width: 6em;">
+						</a>
+						<div class="nav-right">
+							<a href="index.html" class="nav-item is-active ">
+								Home
+							</a>
+							<a href="commands.html" class="nav-item ">
+								Commands
+							</a>
+							<a href="https://lrmn.gitbook.io/lucy/" class="nav-item">
+								Documentation
+							</a>
+							<a href="permissions.html" class="nav-item ">
+								Permissions
+							</a>
+							<a href="https://discord.gg/WFfjrQxnfH" class="nav-item">
+								Community
+							</a>
+							<a href="https://halucy.hop.sh" class="nav-item">
+								Dashboard
+							</a>
+							<a href="https://discord.com/api/oauth2/authorize?client_id=928966154817523723&permissions=8&scope=bot%20applications.commands" class="nav-item " style="color: #ffffff;">
+								<span>Invite</span>
+							</a>						</div>
+					</div>
+				</header>
+			</div>
+	
+			<!-- Hero content: will be in the middle -->
+			<div id="particles-js"></div>
+			<div class="hero-body">
+				<div class="container has-text-centered">
+					<h1 class="title" style="color: black;">
+						<img src="cdn/images/logo.png">
+					</h1>
+					<h1 class="subtitle" style="margin-top: 1em; color: black; font-weight: bold;">
+						A simple and modern <img src="cdn/images/discord-logo.svg" style="width: 5em; vertical-align: middle; margin-bottom: 0.2em;"> bot.
+						<div class="info">
+							<nav class="level" style="margin-top: 2em;">
+								<div class="level-item has-text-centered">
+									<div>
+										<p class="heading" style="color: black; font-weight: bold;"></p>Guilds</p>
+										<p class="title" style="color: black; font-weight: bold; font-weight: bold;"></p>63</p>
+									</div>
+								</div>
+								<div class="level-item has-text-centered">
+									<div>
+										<p class="heading" style="color: black; font-weight: bold;"></p>Channels</p>
+										<p class="title" style="color: black; font-weight: bold;"></p>47</p>
+									</div>
+								</div>
+								<div class="level-item has-text-centered">
+									<div>
+										<p class="heading" style="color: black; font-weight: bold;"></p>Users</p>
+										<p class="title" style="color: black; font-weight: bold;"></p>87</p>
+									</div>
+								</div>
+								<div class="level-item has-text-centered">
+									<div>
+										<p class="heading" style="color: black; font-weight: bold;"></p>Uptime</p>
+										<p class="title" style="color: black; font-weight: bold;"></p>99.99%</p>
+									</div>
+								</div>
+							</nav>
+						</div>
+					</h2>
+					<div style="margin-top:3em; font-weight: bold;">
+						<a href="https://discord.com/api/oauth2/authorize?client_id=928966154817523723&permissions=8&scope=bot%20applications.commands" class="button is-info is-inverted" style="background-color: #ffbebb00; color: black; border-color: white;">
+							<span>Invite LUCY To Your Server</span>
+						</a>
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>
+	</body>
+	<script src="cdn/js/particles.min.js"></script>
+	<script>
+		particlesJS('particles-js', {
+			"particles": {
+				"number": {
+				"value": 50,
+				"density": {
+					"enable": true,
+					"value_area": 800
+				}
+				},
+				"color": {
+				"value": "#ffffff"
+				},
+				"shape": {
+				"type": "circle",
+				"stroke": {
+					"width": 0,
+					"color": "#000000"
+				},
+				"polygon": {
+					"nb_sides": 5
+				},
+				"image": {
+					"src": "img/github.svg",
+					"width": 100,
+					"height": 100
+				}
+				},
+				"opacity": {
+				"value": 0.5,
+				"random": false,
+				"anim": {
+					"enable": false,
+					"speed": 1,
+					"opacity_min": 0.1,
+					"sync": false
+				}
+				},
+				"size": {
+				"value": 3,
+				"random": true,
+				"anim": {
+					"enable": false,
+					"speed": 40,
+					"size_min": 0.1,
+					"sync": false
+				}
+				},
+				"line_linked": {
+				"enable": true,
+				"distance": 150,
+				"color": "#ffffff",
+				"opacity": 0.4,
+				"width": 0.9469771699587272
+				},
+				"move": {
+				"enable": true,
+				"speed": 1.5782952832645452,
+				"direction": "none",
+				"random": false,
+				"straight": false,
+				"out_mode": "out",
+				"bounce": false,
+				"attract": {
+					"enable": false,
+					"rotateX": 600,
+					"rotateY": 1200
+				}
+				}
+			},
+			"interactivity": {
+				"detect_on": "canvas",
+				"events": {
+				"onhover": {
+					"enable": false,
+					"mode": "repulse"
+				},
+				"onclick": {
+					"enable": true,
+					"mode": "push"
+				},
+				"resize": true
+				},
+				"modes": {
+				"grab": {
+					"distance": 400,
+					"line_linked": {
+					"opacity": 1
+					}
+				},
+				"bubble": {
+					"distance": 400,
+					"size": 40,
+					"duration": 2,
+					"opacity": 8,
+					"speed": 3
+				},
+				"repulse": {
+					"distance": 200,
+					"duration": 0.4
+				},
+				"push": {
+					"particles_nb": 4
+				},
+				"remove": {
+					"particles_nb": 2
+				}
+				}
+			},
+			"retina_detect": true
+			});
+	</script>
+</html>

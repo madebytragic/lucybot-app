@@ -1,0 +1,2549 @@
+<!DOCTYPE html>
+<html style="background-color: #F5F5F5;">
+	
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+		<meta charset="UTF-8">
+		<meta name="description" content=" | A simple and modern Discord bot that provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools.  is built on Node.js and uses the Discord.js framework.">
+		<meta name="keywords" content="Discord, Discord bots, Discord bot, ,  Discord">
+		<meta name="author" content="">
+		<title>LUCY</title>
+		<link rel="icon" href="cdn/avatar.png">
+		<style>
+			@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+			body {
+				font-family: monospace;
+			}
+
+			.main {
+				margin: 1em 6em 1em 6em;
+			}
+
+			@media screen and (max-width: 1450px) {
+				.main {
+					margin: 1em 1em 1em 1em;
+				}
+			}
+
+			table tr:first-child th:first-child {
+				width: 20%;
+			}
+
+			.tabcontent {
+				display: none;
+			}
+
+			.tag {
+				border-radius: 0px !important;
+				margin-left: 5px !important;
+			}
+
+			.card-content-command {
+				padding: 0.5rem !important;
+				font-size: 0.8em;
+			}
+
+			.card-command {
+				margin-bottom: 0.5em;
+			}
+
+			.card-header-title {
+				padding: 0.5rem !important;
+			}
+
+			.card-header-icon {
+				padding: 0.5rem !important;
+			}
+
+			.overflowtext {
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+
+			.pulse {
+				display: block;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: #ff0000;
+				cursor: pointer;
+				box-shadow: 0 0 0 rgba(204, 44, 44, 0.4);
+				animation: pulse 2s infinite;
+			}
+
+			.pulse:hover {
+				animation: none;
+			}
+
+			@media screen and (max-width: 770px) {
+				.tag-mobile {
+					display: none !important;
+				}
+			}
+
+			@-webkit-keyframes pulse {
+				0% {
+					-webkit-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+				}
+				70% {
+					-webkit-box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+				}
+				100% {
+					-webkit-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+				}
+			}
+			
+			@keyframes pulse {
+				0% {
+					-moz-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+					box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+				}
+				70% {
+					-moz-box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+					box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+				}
+				100% {
+					-moz-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+					box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+				}
+			}
+		</style>
+		<link rel="stylesheet" href="cdn/css/bulma.css">
+		<link rel="stylesheet" href="cdn/css/font-awesome.min.css">
+		<link rel="stylesheet" href="cdn/css/main.css">
+		<meta property="og:url" content="https://halucy.hop.sh/">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="A simple and modern Discord bot.">
+		<meta property="og:description" content=" provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools.  is built on Node.js and uses the Discord.js framework.">
+		<meta property="og:image" content="https://res.cloudinary.com/lrmn/image/upload/v1685861785/lrmn.dev/ogelucy_oow3ip.png">
+		<meta property="og:image:secure_url" content="https://res.cloudinary.com/lrmn/image/upload/v1685861785/lrmn.dev/ogelucy_oow3ip.png">
+		<meta name="viewport" content="width=device-width, initial-scale=0.8">
+	</head>
+	<body>
+		<div class="hero-head hero is-info" style="background-color: #e19fa9;">
+			<div class="hero-head">
+				<header class="nav">
+					<div class="container">
+						<a class="nav-item" href='index.html'>
+							<img src="cdn/images/discord-logo.svg" class="hideme" style="width: 6em;">
+						</a>
+						<div class="nav-right">
+							<a href="index.html" class="nav-item is-active ">
+								Home
+							</a>
+							<a href="commands.html" class="nav-item ">
+								Commands
+							</a>
+							<a href="https://lrmn.gitbook.io/lucy/" class="nav-item">
+								Documentation
+							</a>
+							<a href="permissions.html" class="nav-item ">
+								Permissions
+							</a>
+							<a href="https://discord.gg/WFfjrQxnfH" class="nav-item">
+								Community
+							</a>
+							<a href="https://halucy.hop.sh" class="nav-item">
+								Dashboard
+							</a>
+							<a href="https://discord.com/api/oauth2/authorize?client_id=928966154817523723&permissions=8&scope=bot%20applications.commands" class="nav-item " style="color: #ffffff;">
+								<span>Invite</span>
+							</a>						</div>
+				</div>
+			</header>
+		</div>
+		<div class="main">
+			<div class="columns">
+        <div class="column is-one-quarter" style="opacity: 0.8;">
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%; position: sticky; top: 10px;">
+				<aside class="menu">
+					<p class="menu-label">
+						Commands
+					</p>
+					<ul class="menu-list">
+							<li><a class="tablinks is-active" onclick="show(event, 'Moderation');">Moderation</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Automation');">Automation</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Features');">Features</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Permissions');">Permissions</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Search');">Search</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Util');">Util</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Info');">Info</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Fun');">Fun</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Economy');">Economy</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Gambling');">Gambling</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Profiles');">Profiles</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Skills');">Skills</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Image');">Image</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Reaction');">Reaction</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Counter');">Counter</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Ships');">Ships</a></li>
+					</ul>
+				</aside>
+            </div>
+        </div>
+        <div class="column is-one-half" style="opacity: 0.8;">
+				<div id="Moderation" class="tabcontent" style='display: block; '>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!ban</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">BAN_MEMBERS</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Bans the member you tag if you&#x27;re allowed to ban them.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!clean</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to delete messages with or without a filter.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!giverole</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_ROLES</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to give a member a role using the bot. (helpful for mobile)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!kick</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">KICK_MEMBERS</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Kicks the member you tag if you&#x27;re allowed to kick them.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!nick</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_NICKNAMES</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Changes  nickname
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!nuke</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to completely delete all messages in a channel instantly
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!prefix</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">ADMIN</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Shows or sets the command prefix.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!recolor</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_ROLES</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Recolor a role
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!softban</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">BAN_MEMBERS</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Bans then unbans a member, which clears 7 days of messages.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!takerole</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_ROLES</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to remove a role from a member using the bot. (helpful for mobile)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!unban</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">BAN_MEMBERS</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Unbans a member from your server.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!warn</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Warns the member you tag with the reason given.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!warnings</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to manage and view the warnings of a user.
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Automation" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!autorole</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_ROLES</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Automatically assigns a role to people when they join.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!goodbye</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Says goodbye to a member when they leave.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!ras</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_ROLES</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Reaction based role assignment!
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!sas</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_ROLES</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows admins to set which roles can be self assigned.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!welcome</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Welcomes a member to the server.
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Features" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!ar</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									 will automatically respond to text.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!broadcast</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									 will say what you tell her to say in the channel you choose.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!cr</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to add and edit custom reactions.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!crole</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_ROLES</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Let&#x27;s you create a custom role that members can edit.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!levelup</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to toggle level up notifications.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!modlog</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									An extension to audit logs that has things like deleted/edited messages.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!starboard</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows a user maintained pin channel to be used.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!tags</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Has everything you need to manage tags.
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Permissions" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!blacklist</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to blacklist members from using . (To prevent spam)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!botchannel</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Set the channel to be the only channel where bot commands can be used
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!default</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Defaults a command or command group.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!disable</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Disables a command or command group.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!enable</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Enables a command or command group.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!freechannel</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Will remove the channel lock if set
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!ignore</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									 will ignore the channel you tag. (defaults to current channel)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!listen</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									 will stop ignoring the current channel. (or the one you tag)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!perms</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to configure permissions
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!whitelist</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MANAGE_SERVER</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Removes a member from the blacklist so they can use commands again.
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Search" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!!</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									You can find out abbreviations from &lt;https://duckduckgo.com/bang&gt;!
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!album</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Searches Spotify for an album.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!anime</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Search for anime and get information
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!animechar</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Search for anime/manga characters and get information
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!artist</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Searches Spotify for an artist.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!crypto</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Returns the price of a crypto pair.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!define</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Searches urban dictionary.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!episodes</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Search for anime episodes and links them
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!lyrics</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Will search Genius for lyrics and return a link to view them.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!manga</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Search for manga and get information
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!reddit</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Posts a random reddit image to the channel.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!song</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Searches Spotify for a track.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!stocks</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to view some stock market information
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!tldr</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Creates td;dr versions of a linked article
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Util" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!avatar</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Grabs the profile picture of the user you mention.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!color</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									See a colour or generate a random one.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!commands</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Provides a neat list of commands.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!donate</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Help hosting and unlock some neat features!
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!help</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Shows all commands or help on tagged command
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!invite</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Responds with an invite url.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!list</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Responds with a neat list of commands.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!ping</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Checks the bot&#x27;s ping to the Discord server.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!rcolor</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to change the color of your custom role (if you have one)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!remindme</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to set a reminder. ( will dm you when you request)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!rname</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to change the name of your custom role (if you have one)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!shards</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Returns information on all the shards.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!stats</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Displays statistics about the bot.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!sub</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows members to self-assign roles.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!support</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Responds with an invite to the development server.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!tag</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Sends a message using a tag you set. (Use &#x27;t&#x27;)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!todo</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to add things to your todo list.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!unsub</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows members to remove self-assigned roles.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!vote</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Responds a link to vote for .
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Info" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!about</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Displays information about the bot.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!channels</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Lists the available channels or information on the channel you mention.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!emotes</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Lists the available emotes or information on the emotes you mention.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!roles</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Lists the available roles or information on the role you mention.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!server</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Gets information about the current server.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!user</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Gets information about a guild member.
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!botinvite</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									get bot's invite
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!botinfo</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									get bot information
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!avatar [member]</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									displays avatar information
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!emojinfo [emoji]</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									displays emoji information
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Fun" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!8ball</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Ask the magic 8-ball a question.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!banner</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Makes a banner of your message using regional indicators.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!choose</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Chooses a random option (seperate with &#x27;|&#x27;)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!f</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Pay respects to something
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!face</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Detect a face in an image
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!fortune</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Get a fortune.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!gmfoing</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									A cute typo by a cute person.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!hello</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Responds with hello. (mostly for checking if the bot is online)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!inspire</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Generates a random and terrible inspirational quote.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!kill</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to kill someone.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!#1</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Public Enemy #1.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!rate</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Rates a thing or user out of 10.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!rps</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Provably fair game of Rock, Paper, Scissors
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!say</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									 will say what you tell her to say. (Add -hide to the end to remove your own message)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!uwuify</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Economy" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!balance</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Checks the money in your account.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!daily</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Get some silver every 12 hours.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!exchange</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Exchange your copper for silver.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!guild</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									A guild house is where you can upgrade your stuff
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!leaderboard</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									View the money leaderboard for all of 
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!send</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Give somebody some of your silver. (30% tax)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!top</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									View the money leaderboard for your server
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!transactions</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									A list of your recent transactions
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!workers</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Workers allow you to increase your daily silver
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!bank transfer [member] [amount]</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									transfer coins to other user
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Gambling" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!dice</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Bet on the roll of a dice
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!duel</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Duel someone to win some silver
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!flip</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Bet money on the flip of a coin.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!roulette</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Bet against a game of Russian roulette with other members
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!slots</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Let&#x27;s you play a round with the slot machine
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Profiles" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!achievements</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									View information about achievements
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!background</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Allows you to edit your profile background image.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!bio</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Change your account bio.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!profile</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Shows you your profile.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!rep</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Give some reputation to other members.
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!rep view [member]</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									view reputation for a user
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!rep give [member]</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									give reputation to a user
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Skills" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!chop</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Chop to improve your wood cutting skill
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!fish</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Fish to improve your fishing skill
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!mine</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Mine to improve your mining skill
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!skills</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Information on all your skills progress
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Image" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!cat</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Posts a random image or gif of a cat. (Send to a member by tagging them)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!catgirl</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Posts a random image of a catgirl.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!dog</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Posts a random image of a dog. (Send to a member by tagging them)
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!{available generator}</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									image meme generator
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!anime [reaction]</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									anime reactions: kiss, hug, feed, cuddle, slap, pat, wink, smug, poke, tickle
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Reaction" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!cheer</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Cheers for... something I guess.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!cringe</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									When somebody says something awful.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!cry</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Sends a crying reaction.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!dance</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Because dancing feels good?
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!party</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									When something is worth celebrating.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!pat</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Pats the user you tag or mention.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!poke</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Pokes the user you tag or mention.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!smug</code>
+								</p>
+								<div class="card-header-icon">
+									
+									
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Sends a smug reaction.
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Counter" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!counters</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Lists all available counters and your stats.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!react</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									React using custom reactions created by the server. (use &#x27;r&#x27;)
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!cookie</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Bake a lovely cookie for the one you tag.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!boop</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Boop the member you tag on the nose.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!spank</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									This one&#x27;s a little naughty...
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!hug</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									We all need a hug every now and then...
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!pet</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									There&#x27;s just something about having your head petted...
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!kiss</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Give a big kiss to the member you tag!
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!slap</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Slap somebody for whatever reason you would do that...
+								</div>
+							</div>
+						 </div>
+				</div>
+				<div id="Ships" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!match</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Checks the compatibility of two users.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!ship</code>
+								</p>
+								<div class="card-header-icon">
+									
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Creates a bond between you and the user you tag. (if they accept)
+								</div>
+							</div>
+						 </div>
+				</div>
+        </div>
+	</div>
+<script>
+	function show(evt, command) {
+
+		// Declare all variables
+	    var i, tabcontent, tablinks;
+
+	    // Get all elements with class="tabcontent" and hide them
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+	
+	    // Get all elements with class="tablinks" and remove the class "active"
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+	    }
+	
+	    // Show the current tab, and add an "active" class to the button that opened the tab
+		document.getElementById(command).style.display = "block";
+	    evt.currentTarget.className += " is-active";
+	}
+</script>
+		</div>
+	</body>
+</html>

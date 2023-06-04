@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html style="background-color: #F5F5F5;">
+	
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Lucy | A simple and modern Discord bot that provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools. Lucy is built on Node.js and uses the Discord.js framework.">
+		<meta name="keywords" content="Discord, Discord bots, Discord bot, Lucy, Lucy Discord">
+		<meta name="author" content="Lucy">
+		<title>LUCY</title>
+		<link rel="icon" href="cdn/avatar.png">
+		<style>
+			@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+			body {
+				font-family: monospace;
+			}
+
+			.main {
+				margin: 1em 6em 1em 6em;
+			}
+
+			@media screen and (max-width: 1450px) {
+				.main {
+					margin: 1em 1em 1em 1em;
+				}
+			}
+
+			table tr:first-child th:first-child {
+				width: 20%;
+			}
+
+			.tabcontent {
+				display: none;
+			}
+
+			.tag {
+				border-radius: 0px !important;
+				margin-left: 5px !important;
+			}
+
+			.card-content-command {
+				padding: 0.5rem !important;
+				font-size: 0.8em;
+			}
+
+			.card-command {
+				margin-bottom: 0.5em;
+			}
+
+			.card-header-title {
+				padding: 0.5rem !important;
+			}
+
+			.card-header-icon {
+				padding: 0.5rem !important;
+			}
+
+			.overflowtext {
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+
+			.pulse {
+				display: block;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: #ff0000;
+				cursor: pointer;
+				box-shadow: 0 0 0 rgba(204, 44, 44, 0.4);
+				animation: pulse 2s infinite;
+			}
+
+			.pulse:hover {
+				animation: none;
+			}
+
+			@media screen and (max-width: 770px) {
+				.tag-mobile {
+					display: none !important;
+				}
+			}
+
+			@-webkit-keyframes pulse {
+				0% {
+					-webkit-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+				}
+				70% {
+					-webkit-box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+				}
+				100% {
+					-webkit-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+				}
+			}
+			
+			@keyframes pulse {
+				0% {
+					-moz-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+					box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+				}
+				70% {
+					-moz-box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+					box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+				}
+				100% {
+					-moz-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+					box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+				}
+			}
+		</style>
+		<link rel="stylesheet" href="cdn/css/bulma.css">
+		<link rel="stylesheet" href="cdn/css/font-awesome.min.css">
+		<link rel="stylesheet" href="cdn/css/main.css">
+		<meta property="og:url" content="https://halucy.hop.sh//">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="A simple and modern Discord bot.">
+		<meta property="og:description" content="Lucy provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools. Lucy is built on Node.js and uses the Discord.js framework.">
+		<meta property="og:image" content="https://res.cloudinary.com/lrmn/image/upload/v1685861785/lrmn.dev/ogelucy_oow3ip.png">
+		<meta property="og:image:secure_url" content="https://res.cloudinary.com/lrmn/image/upload/v1685861785/lrmn.dev/ogelucy_oow3ip.png">
+		<meta name="viewport" content="width=device-width, initial-scale=0.8">
+	</head>
+	<body>
+		<div class="hero-head hero is-info" style="background-color: #e19fa9;">
+			<header class="nav">
+				<div class="container">
+					<a class="nav-item" href='index.html'>
+						<img src="cdn/images/discord-logo.svg" class="hideme" style="width: 6em;">
+					</a>
+					<div class="nav-right">
+						<a href="index.html" class="nav-item ">
+							Home
+						</a>
+						<a href="commands.html" class="nav-item ">
+							Commands
+						</a>
+						<a href="https://https://lrmn.gitbook.io/lucy/" class="nav-item">
+							Documentation
+						</a>
+						<a href="permissions.html" class="nav-item is-active">
+							Permissions
+						</a>
+						<a href="https://discord.gg/WFfjrQxnfH" class="nav-item">
+							Community
+						</a>
+						<a href="https://halucy.hop.sh" class="nav-item">
+							Dashboard
+						</a>
+						<a href="https://discord.com/api/oauth2/authorize?client_id=928966154817523723&permissions=8&scope=bot%20applications.commands" class="nav-item " style="color: #ffffff;">
+							<span>Invite</span>
+						</a>					</div>
+				</div>
+			</header>
+		</div>
+		<div class="main">
+			<div class="main">
+	<div style="width: 100%; height: 35px; border-bottom: 1px solid black; text-align: center; margin-bottom: 2em;">
+		<span style="font-size: 40px; background-color: #f5f5f5; padding: 0 10px;">
+			Basic Permissions
+		</span>
+	</div>
+	<div class="columns">
+        <div class="column is-one-half ">
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Creating a bot channel</h1>
+					<div class="card card-command">
+						<header class="card-header">
+							<p class="card-header-title" style="margin-bottom: 0em;">
+								<code>!botchannel {channel}</code>
+							</p>
+							<div class="card-header-icon">
+								<span class="tag tag-mobile is-success is-pulled-right">MANAGE_SERVER</span>
+								<span class="tag tag-mobile is-info is-pulled-right">SERVER ONLY</span>
+							</div>
+						</header>
+						<div class="card-content card-content-command">
+							<div class="content">
+								Set the current channel to be the only channel that allows commands by default.
+							</div>
+						</div>
+					</div>
+					<div class="card card-command">
+						<header class="card-header">
+							<p class="card-header-title" style="margin-bottom: 0em;">
+								<code>!freechannel {channel}</code>
+							</p>
+							<div class="card-header-icon">
+								<span class="tag tag-mobile is-success is-pulled-right">MANAGE_SERVER</span>
+								<span class="tag tag-mobile is-info is-pulled-right">SERVER ONLY</span>
+							</div>
+						</header>
+						<div class="card-content card-content-command">
+							<div class="content">
+								Will remove the bot channel status of the mentioned channel
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%; margin-top: 1em;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Enabling or disabling a command</h1>
+					<div class="card card-command">
+						<header class="card-header">
+							<p class="card-header-title" style="margin-bottom: 0em;">
+								<code>!enable {command/group}</code>
+							</p>
+							<div class="card-header-icon">
+								<span class="tag tag-mobile is-success is-pulled-right">MANAGE_SERVER</span>
+								<span class="tag tag-mobile is-info is-pulled-right">SERVER ONLY</span>
+					    	</div>
+						</header>
+						<div class="card-content card-content-command">
+							<div class="content">
+								Enable a command or group on the guild level (!default {command/group} to reset)
+							</div>
+						</div>
+					</div>
+					<div class="card card-command">
+						<header class="card-header">
+							<p class="card-header-title" style="margin-bottom: 0em;">
+								<code>!disable {command/group}</code>
+							</p>
+							<div class="card-header-icon">
+								<span class="tag tag-mobile is-success is-pulled-right">MANAGE_SERVER</span>
+								<span class="tag tag-mobile is-info is-pulled-right">SERVER ONLY</span>
+					    	</div>
+						</header>
+						<div class="card-content card-content-command">
+							<div class="content">
+								Disable a command or group on the guild level (!default {command/group} to reset)
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+        <div class="column is-one-half ">
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Ignore or listen to a channel</h1>
+					<div class="card card-command">
+						<header class="card-header">
+							<p class="card-header-title" style="margin-bottom: 0em;">
+								<code>!ignore {channel}</code>
+							</p>
+							<div class="card-header-icon">
+								<span class="tag tag-mobile is-success is-pulled-right">MANAGE_SERVER</span>
+								<span class="tag tag-mobile is-info is-pulled-right">SERVER ONLY</span>
+							</div>
+						</header>
+						<div class="card-content card-content-command">
+							<div class="content">
+								Lucy will ignore the channel you tag. (defaults to current channel)
+							</div>
+						</div>
+					</div>
+					<div class="card card-command">
+						<header class="card-header">
+							<p class="card-header-title" style="margin-bottom: 0em;">
+								<code>!listen {channel}</code>
+							</p>
+							<div class="card-header-icon">
+								<span class="tag tag-mobile is-success is-pulled-right">MANAGE_SERVER</span>
+								<span class="tag tag-mobile is-info is-pulled-right">SERVER ONLY</span>
+							</div>
+						</header>
+						<div class="card-content card-content-command">
+							<div class="content">
+								Lucy will stop ignoring the current channel. (or the one you tag)
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%; margin-top: 1em;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Blacklist or whitelist a member</h1>
+					<div class="card card-command">
+						<header class="card-header">
+							<p class="card-header-title" style="margin-bottom: 0em;">
+								<code>!blacklist &lt;user&gt;</code>
+							</p>
+							<div class="card-header-icon">
+								<span class="tag tag-mobile is-success is-pulled-right">MANAGE_SERVER</span>
+								<span class="tag tag-mobile is-info is-pulled-right">SERVER ONLY</span>
+							</div>
+						</header>
+						<div class="card-content card-content-command">
+							<div class="content">
+								Allows you to blacklist members from using Lucy. (To prevent spam)
+							</div>
+						</div>
+					</div>
+					<div class="card card-command">
+						<header class="card-header">
+							<p class="card-header-title" style="margin-bottom: 0em;">
+								<code>!whitelist &lt;user&gt;</code>
+							</p>
+							<div class="card-header-icon">
+								<span class="tag tag-mobile is-success is-pulled-right">MANAGE_SERVER</span>
+								<span class="tag tag-mobile is-info is-pulled-right">SERVER ONLY</span>
+							</div>
+						</header>
+						<div class="card-content card-content-command">
+							<div class="content">
+								Removes a member from the blacklist so they can use commands again.
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+	<div style="width: 100%; height: 35px; border-bottom: 1px solid black; text-align: center; margin-bottom: 2em;">
+		<span style="font-size: 40px; background-color: #f5f5f5; padding: 0 10px;">
+			Advanced Permissions
+		</span>
+	</div>
+	<div class="columns">
+        <div class="column is-one-half ">
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Advanced Permission Commands</h1>
+				</div>
+				<div class="content is-small">
+					<table>
+						<thead>
+							<tr>
+								<th>Command</th>
+								<th>Options</th>	
+								<th>Information</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>!perms list</td>
+								<td></td>
+								<td>Lists all available commands you can edit permissions for</td>
+							</tr>
+							<tr>
+								<td>!perms allow</td>
+								<td>&lt;group/command&gt; &lt;type&gt; {target}</td>
+								<td>Enable the command in the given target</td>
+							</tr>
+							<tr>
+								<td>!perms deny</td>
+								<td>&lt;group/command&gt; &lt;type&gt; {target}</td>
+								<td>Disable the command in the given target</td>
+							</tr>
+							<tr>
+								<td>!perms default</td>
+								<td>&lt;group/command&gt; &lt;type&gt; {target}</td>
+								<td>Resets the permission to the default</td>
+							</tr>
+							<tr>
+								<td>!perms clear</td>
+								<td>&lt;group/command&gt; &lt;type&gt; {target}</td>
+								<td>Clears the permissions for the given extended type</td>
+							</tr>
+							<tr>
+								<td>!perms show</td>
+								<td>&lt;group/command&gt;</td>
+								<td>Show set permissions for the given extended type</td>
+							</tr>
+							<tr>
+								<td>!perms warn</td>
+								<td></td>
+								<td>Lucy will react to commands that are disabled</td>
+							</tr>
+							<tr>
+								<td>!perms ignore</td>
+								<td></td>
+								<td>Lucy will just ignore commands that are disabled</td>
+							</tr>
+						</tbody>
+					</table>
+					<article class="message" style="font-size: 0.75rem;">
+						<div class="message-body">
+							<table>
+								<tbody>
+									<tr>
+										<td style="padding: 0em 0em;">&lt;&gt; - Required argument</td>
+										<td style="padding: 0em 0em;">{} - Optional argument</td>
+										<td style="padding: 0em 0em;">/  - Either option</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</article>
+					<article class="message is-danger" style="font-size: 0.75rem;">
+						<div class="message-body">
+							Do not include &lt;&gt;, {}, or / in your command!
+						</div>
+					</article>
+				</div>
+            </div>
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%; margin: 1em 0em 0em 0em;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Examples</h1>
+					<ul>
+						<li>!perms list</li>
+					</ul>
+					<ul>
+						<li>!perms allow ping channel #general</li>
+						<li>!perms deny all guild</li>
+						<li>!perms deny fun role @newpeople</li>
+						<li>!perms allow fun user @member</li>
+					</ul>
+					<ul>
+						<li>!perms clear</li>
+						<li>!perms clear hello</li>
+						<li>!perms clear util channel</li>
+						<li>!perms show</li>
+						<li>!perms show fun</li>
+						<li>!perms show user @member</li>
+					</ul>
+					<ul>
+						<li>!perms warn</li>
+						<li>!perms ignore</li>
+					</ul>
+            	</div>
+            </div>
+        </div>
+        <div class="column is-one-half ">
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Type Hierarchy</h1>
+					<article class="message is-info" style="font-size: 0.75rem;">
+						<div class="message-body">
+							Context will always overwrite in the one above it, from least important to most important:<br>
+							Guild -> Channel -> Role -> User
+						</div>
+					</article>
+				</div>
+            </div>
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%; margin: 1em 0em 0em 0em;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Types</h1>
+					<dl>
+						<dt>guild</dt>
+							<dd style="-webkit-margin-start: 40px;">Will use the current guild</dd>
+						<dt>channel {#channel}</dt>
+							<dd style="-webkit-margin-start: 40px;">Will use the tagged channel or current channel if no tag is provided</dd>
+						<dt>role &lt;@role&gt;</dt>
+							<dd style="-webkit-margin-start: 40px;">Will use the tagged role</dd>
+						<dt>user &lt;@user&gt;</dt>
+							<dd style="-webkit-margin-start: 40px;">Will use the tagged user</dd>
+					</dl>
+				</div>
+            </div>
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%; margin: 1em 0em 0em 0em;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Extended Types</h1>
+					<h6 style="color: #3273dc;">Extended types are used by the clear and show commands, they use the same types as above as well as below:</h6>
+					<dl>
+						<dt>command &lt;command&gt;</dt>
+							<dd style="-webkit-margin-start: 40px;">Will use the command mentioned</dd>
+						<dt>group &lt;group&gt;</dt>
+							<dd style="-webkit-margin-start: 40px;">Will use the group mentioned</dd>
+					</dl>
+				</div>
+            </div>
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%; margin: 1em 0em 0em 0em;">
+				<div class="content">
+					<h1 style="color: #3273dc;">Getting started (optional)</h1>
+					<p>
+						To create a channel dedicated to using bot commands you can run:
+					</p>
+						<blockquote style="-webkit-margin-start: 40px;">!perms deny all guild</blockquote>
+					<p>
+						To deny commands everywhere, and then:
+					</p>
+						<blockquote style="-webkit-margin-start: 40px; margin-bottom: 1em;">!perms allow all channel</blockquote>
+					In the channel that you wish to be used for commands.
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+		</div>
+	</body>
+
+<!-- Mirrored from Lucybot.app/permissions by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Jun 2023 07:38:31 GMT -->
+</html>
